@@ -1,0 +1,11 @@
+.back-ground{
+    text-align: center;
+    background: linear-gradient(black, rgb(29, 255, 29), black);
+    color: white;
+}
+.border-radius{
+    border-radius: 50%;
+}
+.borde{
+    border: solid white 2px;
+}

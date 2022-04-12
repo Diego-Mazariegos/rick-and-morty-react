@@ -3,7 +3,7 @@ import React from 'react';
 import MyCards from '../Cards/MyCards';
 import useGetAPI from '../hooks';
 import { Context } from '../Context';
-import { Button, Row, Col } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import './cardsItems.css'
 const CardsItems = () => {
     useGetAPI()
@@ -18,10 +18,10 @@ const CardsItems = () => {
     } = React.useContext(Context)
 
     React.useEffect(() => {
-        if ( character.info?.pages == pages) {
+        if (character.info?.pages === pages) {
             setDisabled(true)
-        } 
-        if(pages == 1){
+        }
+        if(pages === 1){
             setDisabledBack(true)
         }
     }, [pages]);
@@ -32,31 +32,29 @@ const CardsItems = () => {
         setDisabled(true)
         setDisabledBack(true)
 
-
-        if (character.info.next != null) {
+        if (character.info.next !== null) {
             const response = await axios(character.info.next)
 
             setCharacter(response.data)
-            setPages(pages + 1);
             setTimeout(() => {
-                setDisabledBack(false)
                 setDisabled(false)
+                setDisabledBack(false)
+                setPages(pages + 1);
             }, 2000);
         }
     }
 
     async function atras() {
-
-        if (character.info.prev != null) {
+        if (character.info.prev !== null) {
             setDisabled(true)
-            setDisabledBack(false)
+            setDisabledBack(true)
             const response = await axios(character.info.prev)
 
-            setCharacter(response.data)
-            setPages(pages - 1)
+            setCharacter(response.data) 
             setTimeout(() => {
                 setDisabled(false)
-                setDisabledBack(true)
+                setDisabledBack(false)
+                setPages(pages - 1)
             }, 2000);
         }
 
@@ -64,9 +62,9 @@ const CardsItems = () => {
     return (
         <React.Fragment>
             <div className="buttons">
-                <Button disabled={disabledBack} className="bg-success borderz" onClick={atras}>Atras</Button>
+                <Button disabled={disabledBack} className="bg-dark border" onClick={atras}>Atras</Button>
                 <h1 className="color-title">Rick And Morty</h1>
-                <Button disabled={disabled} className="bg-success border" onClick={siguiente}>Siguiente</Button>
+                <Button disabled={disabled} className="bg-dark border" onClick={siguiente}>Siguiente</Button>
             </div>
             <div className="cards">
                 {character.results?.map((character) => (

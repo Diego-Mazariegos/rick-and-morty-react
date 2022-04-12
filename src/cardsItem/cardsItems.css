@@ -2,7 +2,8 @@
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    pad: 0 50px;
+    font-weight: bold;
+    justify-content: center;
 }
 .buttons{
     width: 100%;
@@ -12,7 +13,7 @@
     align-items: center;
 }
 .color-title{
-    background: linear-gradient(green, yellowgreen, green);
+    background: linear-gradient(black, rgb(29, 255, 29), black);
     -webkit-background-clip: text;
     color:  transparent;
     font-weight: bold;
